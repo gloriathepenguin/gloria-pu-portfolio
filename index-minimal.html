@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gloria Pu - DJ & Music Artist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: #0a0a0a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Swiss grid system */
+        .swiss-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+        }
+
+        /* Minimal hover effects */
+        .minimal-hover {
+            transition: all 0.2s ease;
+        }
+
+        .minimal-hover:hover {
+            opacity: 0.6;
+        }
+
+        /* Accent line */
+        .accent-line {
+            position: relative;
+        }
+
+        .accent-line::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #0a0a0a;
+        }
+
+        /* Image overlay on hover */
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: #0a0a0a;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .image-container:hover .image-overlay {
+            opacity: 0.9;
+        }
+
+        /* Smooth transitions */
+        a, button {
+            transition: all 0.2s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #0a0a0a;
+        }
+
+        /* Typography scale */
+        .text-display {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.95;
+            font-weight: 300;
+            letter-spacing: -0.03em;
+        }
+
+        .text-hero {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        /* Grid lines for Swiss aesthetic */
+        .grid-lines {
+            background-image:
+                linear-gradient(#e5e5e5 1px, transparent 1px),
+                linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+        }
+
+        /* Section spacing */
+        section {
+            padding: 8rem 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex items-center justify-between h-16">
+                <a href="#home" class="text-sm font-medium tracking-wider minimal-hover">GLORIA PU</a>
+                <div class="hidden md:flex items-center space-x-12">
+                    <a href="#work" class="text-xs uppercase tracking-wider minimal-hover">Work</a>
+                    <a href="#music" class="text-xs uppercase tracking-wider minimal-hover">Music</a>
+                    <a href="#contact" class="text-xs uppercase tracking-wider minimal-hover">Contact</a>
+                </div>
+                <button class="md:hidden">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Text -->
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <p class="text-xs uppercase tracking-wider text-gray-600">Electronic Music Artist</p>
+                        <h1 class="text-display">
+                            Gloria<br/>Pu
+                        </h1>
+                    </div>
+
+                    <div class="accent-line pl-6 space-y-4 max-w-md">
+                        <p class="text-lg leading-relaxed text-gray-700">
+                            DJ and producer crafting immersive sonic experiences through techno, house, and experimental electronic music.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 text-sm">
+                        <a href="#music" class="px-8 py-3 bg-black text-white minimal-hover">
+                            Listen
+                        </a>
+                        <a href="#contact" class="px-8 py-3 border border-black minimal-hover">
+                            Book
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="relative aspect-[4/5] bg-gray-100">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center space-y-4 text-gray-400">
+                            <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <p class="text-xs uppercase tracking-wider">Portrait</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="border-y border-black/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/10">
+                <div class="py-12 px-6 text-center">
+                    <p class="text-4xl font-light mb-2">50+</p>
+                    <p class="text-xs uppercase tracking-wider text-gray-600">Shows</p>
+                </div>
+                <div class="py-12 px-6 text-center">
+                    <p class="text-4xl font-light mb-2">10</p>
+                    <p class="text-xs uppercase tracking-wider text-gray-600">Cities</p>
+                </div>
+                <div class="py-12 px-6 text-center">
+                    <p class="text-4xl font-light mb-2">5k+</p>
+                    <p class="text-xs uppercase tracking-wider text-gray-600">Listeners</p>
+                </div>
+                <div class="py-12 px-6 text-center">
+                    <p class="text-4xl font-light mb-2">20+</p>
+                    <p class="text-xs uppercase tracking-wider text-gray-600">Tracks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance History -->
+    <section id="work">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="mb-16">
+                <h2 class="text-hero mb-4">Recent Shows</h2>
+                <p class="text-gray-600 max-w-2xl">Selected performances from the past year</p>
+            </div>
+
+            <div class="space-y-1">
+                <!-- Performance Item -->
+                <a href="#" class="group block border-t border-black/10 hover:bg-gray-50 transition-colors">
+                    <div class="py-8 grid md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-2 text-xs uppercase tracking-wider text-gray-500">
+                            Feb 15, 2026
+                        </div>
+                        <div class="md:col-span-5">
+                            <h3 class="text-xl font-medium mb-1">Warehouse Rave</h3>
+                            <p class="text-sm text-gray-600">Underground Collective, Berlin</p>
+                        </div>
+                        <div class="md:col-span-3">
+                            <span class="text-xs uppercase tracking-wider text-gray-600">Techno</span>
+                        </div>
+                        <div class="md:col-span-2 text-right">
+                            <span class="inline-block transform group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Performance Item -->
+                <a href="#" class="group block border-t border-black/10 hover:bg-gray-50 transition-colors">
+                    <div class="py-8 grid md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-2 text-xs uppercase tracking-wider text-gray-500">
+                            Feb 01, 2026
+                        </div>
+                        <div class="md:col-span-5">
+                            <h3 class="text-xl font-medium mb-1">Electric Nights</h3>
+                            <p class="text-sm text-gray-600">Metropolis Club, NYC</p>
+                        </div>
+                        <div class="md:col-span-3">
+                            <span class="text-xs uppercase tracking-wider text-gray-600">House</span>
+                        </div>
+                        <div class="md:col-span-2 text-right">
+                            <span class="inline-block transform group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Performance Item -->
+                <a href="#" class="group block border-t border-black/10 hover:bg-gray-50 transition-colors">
+                    <div class="py-8 grid md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-2 text-xs uppercase tracking-wider text-gray-500">
+                            Jan 20, 2026
+                        </div>
+                        <div class="md:col-span-5">
+                            <h3 class="text-xl font-medium mb-1">Neon Dreams Festival</h3>
+                            <p class="text-sm text-gray-600">Outdoor Arena, LA</p>
+                        </div>
+                        <div class="md:col-span-3">
+                            <span class="text-xs uppercase tracking-wider text-gray-600">Festival</span>
+                        </div>
+                        <div class="md:col-span-2 text-right">
+                            <span class="inline-block transform group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Performance Item -->
+                <a href="#" class="group block border-t border-black/10 hover:bg-gray-50 transition-colors">
+                    <div class="py-8 grid md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-2 text-xs uppercase tracking-wider text-gray-500">
+                            Jan 05, 2026
+                        </div>
+                        <div class="md:col-span-5">
+                            <h3 class="text-xl font-medium mb-1">Deep Sessions</h3>
+                            <p class="text-sm text-gray-600">The Loft, London</p>
+                        </div>
+                        <div class="md:col-span-3">
+                            <span class="text-xs uppercase tracking-wider text-gray-600">Deep House</span>
+                        </div>
+                        <div class="md:col-span-2 text-right">
+                            <span class="inline-block transform group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Border bottom -->
+                <div class="border-t border-black/10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="mb-16">
+                <h2 class="text-hero mb-4">Music</h2>
+                <p class="text-gray-600 max-w-2xl">Listen to my latest tracks and mixes</p>
+            </div>
+
+            <!-- Spotify -->
+            <div class="mb-20">
+                <h3 class="text-sm uppercase tracking-wider mb-8 text-gray-600">Spotify Playlists</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white border border-black/10 p-8">
+                        <div class="aspect-square bg-gray-200 mb-6 flex items-center justify-center">
+                            <svg class="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-medium mb-2">Deep Techno Mix</h4>
+                        <p class="text-sm text-gray-600 mb-4">2 hours of underground vibes</p>
+                        <a href="#" class="text-xs uppercase tracking-wider minimal-hover inline-flex items-center gap-2">
+                            Listen on Spotify
+                            <span>→</span>
+                        </a>
+                    </div>
+
+                    <div class="bg-white border border-black/10 p-8">
+                        <div class="aspect-square bg-gray-200 mb-6 flex items-center justify-center">
+                            <svg class="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-medium mb-2">Festival Anthems</h4>
+                        <p class="text-sm text-gray-600 mb-4">Peak time energy tracks</p>
+                        <a href="#" class="text-xs uppercase tracking-wider minimal-hover inline-flex items-center gap-2">
+                            Listen on Spotify
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SoundCloud -->
+            <div>
+                <h3 class="text-sm uppercase tracking-wider mb-8 text-gray-600">SoundCloud Tracks</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white border border-black/10 overflow-hidden image-container">
+                        <div class="aspect-square bg-gray-200 relative flex items-center justify-center">
+                            <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div class="image-overlay">
+                                <button class="text-sm uppercase tracking-wider">Play</button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-medium mb-1">Midnight Pulse</h4>
+                            <p class="text-xs text-gray-600">Dark Techno • 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-black/10 overflow-hidden image-container">
+                        <div class="aspect-square bg-gray-200 relative flex items-center justify-center">
+                            <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div class="image-overlay">
+                                <button class="text-sm uppercase tracking-wider">Play</button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-medium mb-1">Neon Dreams</h4>
+                            <p class="text-xs text-gray-600">Progressive House • 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-black/10 overflow-hidden image-container">
+                        <div class="aspect-square bg-gray-200 relative flex items-center justify-center">
+                            <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div class="image-overlay">
+                                <button class="text-sm uppercase tracking-wider">Play</button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-medium mb-1">Electric Soul</h4>
+                            <p class="text-xs text-gray-600">Deep House • 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Left: Info -->
+                <div>
+                    <h2 class="text-hero mb-8">Get in Touch</h2>
+                    <div class="space-y-8 accent-line pl-6">
+                        <div>
+                            <p class="text-sm uppercase tracking-wider text-gray-600 mb-2">Email</p>
+                            <a href="mailto:booking@gloriapu.com" class="text-lg minimal-hover">booking@gloriapu.com</a>
+                        </div>
+                        <div>
+                            <p class="text-sm uppercase tracking-wider text-gray-600 mb-2">Phone</p>
+                            <a href="tel:+1234567890" class="text-lg minimal-hover">+1 (234) 567-890</a>
+                        </div>
+                        <div>
+                            <p class="text-sm uppercase tracking-wider text-gray-600 mb-2">Social</p>
+                            <div class="flex gap-6 text-sm">
+                                <a href="#" class="minimal-hover">Instagram</a>
+                                <a href="#" class="minimal-hover">SoundCloud</a>
+                                <a href="#" class="minimal-hover">Spotify</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider mb-2" for="name">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                class="w-full border-b border-black/20 py-3 focus:border-black focus:outline-none transition-colors bg-transparent"
+                                placeholder="Your name"
+                            />
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider mb-2" for="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                class="w-full border-b border-black/20 py-3 focus:border-black focus:outline-none transition-colors bg-transparent"
+                                placeholder="your@email.com"
+                            />
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider mb-2" for="message">Message</label>
+                            <textarea
+                                id="message"
+                                rows="5"
+                                class="w-full border-b border-black/20 py-3 focus:border-black focus:outline-none transition-colors bg-transparent resize-none"
+                                placeholder="Tell me about your event..."
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="px-12 py-4 bg-black text-white text-sm uppercase tracking-wider minimal-hover"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-black/10 py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-xs uppercase tracking-wider text-gray-600">© 2026 Gloria Pu</p>
+                <div class="flex gap-8 text-xs uppercase tracking-wider text-gray-600">
+                    <a href="#" class="minimal-hover">Privacy</a>
+                    <a href="#" class="minimal-hover">Terms</a>
+                    <a href="#" class="minimal-hover">Press Kit</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thanks for reaching out! I\'ll get back to you soon.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>

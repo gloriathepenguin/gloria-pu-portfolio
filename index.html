@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gloria Pu — DJ / Curator / Artist</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+           ============================================ */
+        :root {
+            /* Core Neutrals */
+            --ivory: #F6F1E7;
+            --warm-gray: #E6E0D6;
+            --ink: #121212;
+
+            /* Brand Anchors */
+            --fairway-green: #1F3D2B;
+            --olive: #4A5A3A;
+            --denim: #2F4A64;
+
+            /* Accents */
+            --dusty-pink: #D9B2B0;
+            --ox-blood: #6A1F2B;
+
+            /* Typography */
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+
+            /* Spacing */
+            --spacing-unit: 1rem;
+            --section-padding: clamp(4rem, 12vw, 10rem);
+        }
+
+        /* ============================================
+           GLOBAL RESETS & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--ink);
+            background-color: var(--ivory);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%231f3d2b"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>'), auto;
+        }
+
+        /* Texture overlay for printshop quality */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-family: var(--font-body);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        /* Scroll animation for h2 titles */
+        section:not(.hero) h2 {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        section:not(.hero) h2.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            max-width: 720px;
+        }
+
+        .caption {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--olive);
+        }
+
+        /* ============================================
+           BUTTONS & INTERACTIVE ELEMENTS
+           ============================================ */
+        .btn-ghost {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ink);
+            background: transparent;
+            border: 1px solid var(--warm-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--olive);
+            color: var(--olive);
+        }
+
+        .btn-ink {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ivory);
+            background: var(--ink);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-ink:hover {
+            background: var(--olive);
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        .main-nav.scrolled {
+            background: rgba(246, 241, 231, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .main-nav a {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ink);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            opacity: 1;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--warm-gray) 0%, var(--ivory) 100%);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            padding: 2rem;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .hero-content.fade-out {
+            opacity: 0;
+            transform: translate(-50%, -60%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 10vw, 6rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--fairway-green);
+        }
+
+        .hero .subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--olive);
+            margin-bottom: 2rem;
+        }
+
+        .hero .tagline {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--ink);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--olive);
+            opacity: 0.6;
+            animation: fadeInOut 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, 0); }
+            50% { opacity: 0.6; transform: translate(-50%, 5px); }
+        }
+
+        /* ============================================
+           SECTION LAYOUT
+           ============================================ */
+        section {
+            padding: var(--section-padding) 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-number {
+            font-family: var(--font-body);
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+
+        /* ============================================
+           VISUAL SECTION
+           ============================================ */
+        .visual-section {
+            background-color: #D9B2B0;
+            padding: 0;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .visual-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .visual-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .visual-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+        .about {
+            background-color: var(--ivory);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-content {
+            max-width: 620px;
+        }
+
+        .about-content p {
+            margin-bottom: 2rem;
+            font-size: 1.375rem;
+            line-height: 1.65;
+            font-weight: 400;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .about-content p:hover {
+            transform: scale(1.05);
+        }
+
+        .about-content p:first-of-type {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+        }
+
+        .about-content p:first-of-type::first-letter {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            line-height: 1;
+            float: left;
+            margin: 0.1em 0.1em 0 0;
+            color: var(--fairway-green);
+        }
+
+        .about-illustration {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .about-illustration.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-illustration::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--fairway-green);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .about-illustration:hover::after {
+            opacity: 0.1;
+        }
+
+        .about-illustration img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .about-illustration:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Background image for About section */
+        .about-decoration {
+            position: absolute;
+            width: clamp(200px, 25vw, 350px);
+            height: clamp(200px, 25vw, 350px);
+            background-image: url('images/about-shape-3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            top: 5%;
+            left: 3%;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease;
+            pointer-events: none;
+        }
+
+        .about-decoration.visible {
+            opacity: 1;
+        }
+
+        /* ============================================
+           QUOTE SECTION
+           ============================================ */
+        .quote-section {
+            min-height: 300vh;
+            background-color: var(--ivory);
+            position: relative;
+            padding: 0;
+        }
+
+        .quote-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+        }
+
+        .quote-line {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--ink);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .quote-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote-line.move-up {
+            transform: translateY(-30px);
+        }
+
+        .quote-line.final-position {
+            transform: translateY(-60px);
+        }
+
+        .quote-author {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: #1F3D2B;
+            opacity: 0;
+            margin-top: 3rem;
+            transition: opacity 0.8s ease;
+        }
+
+        .quote-author.visible {
+            opacity: 1;
+        }
+
+        /* Quote section background decorations */
+        .quote-bg-image {
+            position: absolute;
+            background-size: cover;
+            background-position: center;
+            border-radius: 2px;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .quote-bg-1 {
+            width: clamp(180px, 20vw, 280px);
+            height: clamp(180px, 20vw, 280px);
+            background-image: url('images/quote-bg-1.jpeg');
+            top: 15%;
+            left: 8%;
+            transform: rotate(-8deg);
+        }
+
+        .quote-bg-2 {
+            width: clamp(150px, 18vw, 240px);
+            height: clamp(150px, 18vw, 240px);
+            background-image: url('images/quote-bg-2.jpg');
+            top: 60%;
+            right: 10%;
+            transform: rotate(12deg);
+        }
+
+        .quote-bg-3 {
+            width: clamp(140px, 16vw, 220px);
+            height: clamp(140px, 16vw, 220px);
+            background-image: url('images/quote-bg-3.jpg');
+            bottom: 20%;
+            left: 12%;
+            transform: rotate(-5deg);
+        }
+
+        .quote-bg-4 {
+            width: clamp(160px, 19vw, 260px);
+            height: clamp(160px, 19vw, 260px);
+            background-image: url('images/quote-bg-4.jpeg');
+            top: 35%;
+            right: 5%;
+            transform: rotate(6deg);
+        }
+
+        .quote-bg-5 {
+            width: clamp(170px, 21vw, 270px);
+            height: clamp(170px, 21vw, 270px);
+            background-image: url('images/quote-bg-5.jpg');
+            bottom: 10%;
+            right: 15%;
+            transform: rotate(-10deg);
+        }
+
+        .quote-bg-6 {
+            width: clamp(100px, 12vw, 160px);
+            height: clamp(100px, 12vw, 160px);
+            background-image: url('images/quote-bg-6.jpg');
+            top: 8%;
+            right: 25%;
+            transform: rotate(15deg);
+        }
+
+        .quote-bg-7 {
+            width: clamp(90px, 11vw, 150px);
+            height: clamp(90px, 11vw, 150px);
+            background-image: url('images/quote-bg-7.jpg');
+            bottom: 45%;
+            left: 5%;
+            transform: rotate(-12deg);
+        }
+
+        .quote-bg-8 {
+            width: clamp(110px, 13vw, 170px);
+            height: clamp(110px, 13vw, 170px);
+            background-image: url('images/quote-bg-8.jpg');
+            top: 70%;
+            right: 8%;
+            transform: rotate(8deg);
+        }
+
+        .quote-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================
+           GIGS ARCHIVE SECTION
+           ============================================ */
+        .gigs {
+            background-color: #3D2F1F;
+            color: #F6F1E7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gigs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/performance-back.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .gigs > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gigs .section-number,
+        .gigs h2 {
+            color: #F6F1E7;
+        }
+
+        .gigs-list {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .gigs-year {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .gigs-year:last-child {
+            border-bottom: none;
+        }
+
+        .year-title {
+            font-family: var(--font-body);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #F6F1E7;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .year-title.visible {
+            opacity: 0.6;
+            transform: translateY(0);
+        }
+
+        .gig-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(246, 241, 231, 0.15);
+            align-items: baseline;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .gig-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gig-item:last-child {
+            border-bottom: none;
+        }
+
+        .gig-date {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #F6F1E7;
+            opacity: 0.5;
+        }
+
+        .gig-venue {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 400;
+            line-height: 1.5;
+            color: #F6F1E7;
+        }
+
+        /* ============================================
+           MUSIC SECTION
+           ============================================ */
+        .music {
+            background-color: var(--ivory);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .disco-decoration {
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            width: clamp(200px, 25vw, 400px);
+            height: auto;
+            z-index: 1;
+            opacity: 0;
+            transform: translateX(100px) rotate(-15deg);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .disco-decoration.visible {
+            opacity: 0.8;
+            transform: translateX(0) rotate(-15deg);
+        }
+
+        .disco-decoration img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .listen-back-decoration {
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            width: clamp(180px, 22vw, 350px);
+            height: auto;
+            z-index: 1;
+            opacity: 0;
+            transform: translateX(-100px) rotate(10deg);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .listen-back-decoration.visible {
+            opacity: 0.7;
+            transform: translateX(0) rotate(10deg);
+        }
+
+        .listen-back-decoration img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .music-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .music-subsection h3 {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ivory);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3);
+            font-weight: 500;
+        }
+
+        .spotify-embed,
+        .soundcloud-embed {
+            background: var(--warm-gray);
+            padding: 2rem;
+            border: 1px solid rgba(31, 61, 43, 0.1);
+        }
+
+        /* ============================================
+           GALLERY SECTION
+           ============================================ */
+        .gallery {
+            background-color: #D9B2B0;
+            padding: var(--section-padding) 3%;
+        }
+
+        .gallery-collage {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(6, 140px);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.03);
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.8s ease;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Custom positioning for 6 images */
+        .gallery-item:nth-child(1) {
+            grid-column: 1 / 5;
+            grid-row: 1 / 4;
+            transition-delay: 0.1s;
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-column: 5 / 9;
+            grid-row: 1 / 3;
+            transition-delay: 0.2s;
+        }
+
+        .gallery-item:nth-child(3) {
+            grid-column: 9 / 13;
+            grid-row: 1 / 4;
+            transition-delay: 0.3s;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-column: 1 / 5;
+            grid-row: 4 / 7;
+            transition-delay: 0.4s;
+        }
+
+        .gallery-item:nth-child(5) {
+            grid-column: 5 / 9;
+            grid-row: 3 / 7;
+            transition-delay: 0.5s;
+        }
+
+        .gallery-item:nth-child(6) {
+            grid-column: 9 / 13;
+            grid-row: 4 / 7;
+            transition-delay: 0.6s;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact {
+            background-color: var(--ivory);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .contact-image {
+            width: 100%;
+            max-height: 600px;
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: -8rem;
+        }
+
+        .contact-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .contact-intro {
+            margin-bottom: 3rem;
+            font-size: 1.125rem;
+            color: var(--olive);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--olive);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            padding: 0.875rem;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--warm-gray);
+            color: var(--ink);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: var(--olive);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            margin-top: 1rem;
+        }
+
+        .email-direct {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--warm-gray);
+            font-size: 0.875rem;
+            color: var(--olive);
+        }
+
+        .email-direct a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--olive);
+            transition: color 0.3s ease;
+        }
+
+        .email-direct a:hover {
+            color: var(--olive);
+        }
+
+        /* ============================================
+           LIGHTBOX
+           ============================================ */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 18, 18, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -3rem;
+            right: 0;
+            font-size: 2rem;
+            color: var(--ivory);
+            cursor: pointer;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: var(--dusty-pink);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 767px) {
+            .visual-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-item {
+                aspect-ratio: 3/4;
+            }
+
+            .gallery-collage {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 200px);
+                gap: 1rem;
+            }
+
+            .gallery-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+            .gallery-item:nth-child(2) { grid-column: 1; grid-row: 2; }
+            .gallery-item:nth-child(3) { grid-column: 1; grid-row: 3; }
+            .gallery-item:nth-child(4) { grid-column: 1; grid-row: 4; }
+            .gallery-item:nth-child(5) { grid-column: 1; grid-row: 5; }
+            .gallery-item:nth-child(6) { grid-column: 1; grid-row: 6; }
+        }
+
+        @media (min-width: 768px) {
+            .music-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .disco-decoration {
+                width: clamp(150px, 35vw, 250px);
+                bottom: 5%;
+                right: 0;
+                opacity: 0.5;
+            }
+
+            .listen-back-decoration {
+                width: clamp(130px, 30vw, 220px);
+                top: 10%;
+                left: 0;
+                opacity: 0.4;
+            }
+
+            .gigs-list {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .gigs-year {
+                margin-bottom: 0;
+                padding-bottom: 2rem;
+                border-bottom: 1px solid rgba(246, 241, 231, 0.2);
+            }
+
+            .gigs-year:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .gig-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                padding: 1.5rem 0;
+            }
+
+            .gig-venue {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-collage {
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: repeat(6, 130px);
+                gap: 0.8rem;
+            }
+
+            .gallery-item:nth-child(1) { grid-column: 1 / 4; grid-row: 1 / 3; }
+            .gallery-item:nth-child(2) { grid-column: 4 / 7; grid-row: 1 / 3; }
+            .gallery-item:nth-child(3) { grid-column: 1 / 3; grid-row: 3 / 5; }
+            .gallery-item:nth-child(4) { grid-column: 3 / 5; grid-row: 3 / 5; }
+            .gallery-item:nth-child(5) { grid-column: 5 / 7; grid-row: 3 / 5; }
+            .gallery-item:nth-child(6) { grid-column: 1 / 7; grid-row: 5 / 7; }
+        }
+
+        @media (max-width: 767px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-content p:first-of-type::first-letter {
+                font-size: 3rem;
+            }
+
+            .about-illustration {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .about-decoration {
+                width: clamp(120px, 25vw, 200px);
+                height: clamp(120px, 25vw, 200px);
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-image {
+                max-height: 400px;
+                margin-top: 0;
+            }
+        }
+
+        /* ============================================
+           SUCCESS MESSAGE
+           ============================================ */
+        .success-message {
+            display: none;
+            padding: 2rem;
+            background: var(--warm-gray);
+            border: 1px solid var(--olive);
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .success-message.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background-color: #2D2416;
+            color: var(--ivory);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+        }
+
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: auto;
+        }
+
+        .footer-year {
+            font-family: var(--font-body);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: var(--ivory);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .footer-social a {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ivory);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+        }
+
+        .footer-copyright {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--ivory);
+            opacity: 0.4;
+        }
+
+        .footer-brand {
+            font-family: var(--font-body);
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            color: var(--ivory);
+            line-height: 0.9;
+            text-align: right;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .footer-brand.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Decorative shapes */
+        .footer-shape {
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            transform: translateX(-150px);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .footer-shape.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .shape-1 {
+            width: clamp(100px, 15vw, 200px);
+            height: clamp(100px, 15vw, 200px);
+            background: #FF7F3F;
+            border-radius: 50%;
+            bottom: 15%;
+            left: 5%;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            transition-delay: 0.1s;
+        }
+
+        .shape-2 {
+            width: clamp(120px, 18vw, 240px);
+            height: clamp(120px, 18vw, 240px);
+            background: #FF9F5A;
+            border-radius: 50%;
+            bottom: 20%;
+            left: 15%;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+            transition-delay: 0.2s;
+        }
+
+        .shape-3 {
+            width: clamp(90px, 13vw, 180px);
+            height: clamp(90px, 13vw, 180px);
+            background: #F4E8D8;
+            border-radius: 50%;
+            bottom: 30%;
+            left: 25%;
+            transition-delay: 0.3s;
+        }
+
+        .shape-4 {
+            width: clamp(80px, 12vw, 160px);
+            height: clamp(80px, 12vw, 160px);
+            background: #2563EB;
+            bottom: 10%;
+            left: 8%;
+            transition-delay: 0.4s;
+        }
+
+        .shape-4.visible {
+            transform: translateX(0) rotate(15deg);
+        }
+
+        .shape-5 {
+            width: clamp(130px, 20vw, 260px);
+            height: clamp(130px, 20vw, 260px);
+            background: #3B82F6;
+            bottom: 5%;
+            right: 8%;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            transition-delay: 0.5s;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 767px) {
+            .main-nav {
+                gap: 1rem;
+                padding: 1.5rem 5%;
+            }
+
+            .main-nav a {
+                font-size: 0.75rem;
+            }
+
+            footer {
+                min-height: 80vh;
+            }
+
+            .footer-content {
+                min-height: 80vh;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer-social {
+                gap: 1rem;
+            }
+
+            .footer-social a {
+                font-size: 0.75rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+
+            .footer-brand {
+                text-align: left;
+            }
+
+            .footer-shape {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav" id="mainNav">
+        <a href="#about">About</a>
+        <a href="#gigs">Gigs</a>
+        <a href="#music">Music</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>GLORIA PU</h1>
+            <div class="subtitle">DJ / Curator / Artist</div>
+            <div class="tagline">Music as Atmosphere.</div>
+        </div>
+        <div class="scroll-indicator">Scroll</div>
+    </section>
+
+    <!-- VISUAL SECTION -->
+    <section class="visual-section">
+        <div class="visual-grid">
+            <div class="visual-item">
+                <img src="images/nature-loves-you.jpeg" alt="Nature Loves You">
+            </div>
+            <div class="visual-item">
+                <img src="images/australia.jpeg" alt="Australia">
+            </div>
+            <div class="visual-item">
+                <img src="images/visual-1.jpeg" alt="Visual 1">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <!-- Decorative element -->
+        <div class="about-decoration"></div>
+
+        <div class="section-header">
+            <div class="section-number">About</div>
+            <h2>Gloria Pu (AKA DJ KiraKira)</h2>
+        </div>
+        <div class="about-container">
+            <div class="about-content">
+                <p>Former investment banker.<br>
+                Now building in AI.<br>
+                Always moving through sound.</p>
+
+                <p>Raised between Yunnan, Hong Kong, Europe, and Shanghai, her sonic language is shaped by movement and contrast. African rhythms, tribal textures, and funky grooves meet global pop references — refined, rhythmic, and quietly magnetic.</p>
+
+                <p>She brings a sense of structure to the dancefloor — precise transitions, controlled tension, effortless flow.</p>
+
+                <p>As a DJ and promoter with SoundsofShanghai, she has played at venues including LE Baron and The Nest.</p>
+            </div>
+            <div class="about-illustration">
+                <img src="images/profile.jpg" alt="Gloria Pu - DJ KiraKira">
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE SECTION -->
+    <section class="quote-section" id="quote">
+        <!-- Background decorations -->
+        <div class="quote-bg-image quote-bg-1"></div>
+        <div class="quote-bg-image quote-bg-2"></div>
+        <div class="quote-bg-image quote-bg-3"></div>
+        <div class="quote-bg-image quote-bg-4"></div>
+        <div class="quote-bg-image quote-bg-5"></div>
+        <div class="quote-bg-image quote-bg-6"></div>
+        <div class="quote-bg-image quote-bg-7"></div>
+        <div class="quote-bg-image quote-bg-8"></div>
+
+        <div class="quote-container">
+            <div class="quote-line" data-line="1">Pay for Soup,</div>
+            <div class="quote-line" data-line="2">Build a Fort,</div>
+            <div class="quote-line" data-line="3">Set That on Fire.</div>
+            <div class="quote-author">— Jean-Michel Basquiat</div>
+        </div>
+    </section>
+
+    <!-- GIGS ARCHIVE SECTION -->
+    <section class="gigs" id="gigs">
+        <div class="section-header">
+            <div class="section-number">Gigs Archive</div>
+            <h2>Selected Performances</h2>
+        </div>
+        <div class="gigs-list">
+            <!-- 2024 -->
+            <div class="gigs-year">
+                <div class="year-title">2024</div>
+                <div class="gig-item">
+                    <div class="gig-date">Aug</div>
+                    <div class="gig-venue">Le Baron X SoundsofShanghai</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Sept</div>
+                    <div class="gig-venue">Le Baron X SoundsofShanghai</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Sept</div>
+                    <div class="gig-venue">Charbon Rooftop X SoundsofShanghai</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Sept</div>
+                    <div class="gig-venue">The Nest X SoundsofShanghai</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Oct</div>
+                    <div class="gig-venue">The Nest X SoundsofShanghai</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Dec</div>
+                    <div class="gig-venue">Muse Penthouse X SoundsofShanghai</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Dec</div>
+                    <div class="gig-venue">Muse Penthouse X Ascend</div>
+                </div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="gigs-year">
+                <div class="year-title">2025</div>
+                <div class="gig-item">
+                    <div class="gig-date">Mar</div>
+                    <div class="gig-venue">Opendeck X Dal Cuore</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">May</div>
+                    <div class="gig-venue">Opendeck X Strawberry Fields</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Jul</div>
+                    <div class="gig-venue">Park Hyatt Shenzhen X Ascend</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Sept</div>
+                    <div class="gig-venue">Opendeck X RaveAM</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Oct</div>
+                    <div class="gig-venue">FETAQ X Barbear Fitness</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Dec</div>
+                    <div class="gig-venue">UnderArmour X Barbear Fitness</div>
+                </div>
+                <div class="gig-item">
+                    <div class="gig-date">Dec</div>
+                    <div class="gig-venue">叹所 Whoopso X RaveAM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MUSIC SECTION -->
+    <section class="music" id="music">
+        <!-- Listen back decoration -->
+        <div class="listen-back-decoration">
+            <img src="images/listen-back.jpg" alt="Listen Back Decoration">
+        </div>
+
+        <!-- Disco decoration -->
+        <div class="disco-decoration">
+            <img src="images/Disco.png" alt="Disco Ball Decoration">
+        </div>
+
+        <div class="section-header">
+            <div class="section-number">Music</div>
+            <h2>Listen</h2>
+        </div>
+        <div class="music-container">
+            <div class="music-subsection">
+                <h3>Spotify Curations</h3>
+                <div class="spotify-embed">
+                    <iframe style="border-radius:0" src="https://open.spotify.com/embed/playlist/2VPk11BmhHyTEWkEsZ3wvA?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="music-subsection">
+                <h3>SoundCloud Mixes</h3>
+                <div class="soundcloud-embed">
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/bei-pu/nu-disco-mix&color=%231f3d2b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery" id="gallery">
+        <div class="section-header">
+            <div class="section-number">Gallery</div>
+            <h2>Visual Stories</h2>
+        </div>
+        <div class="gallery-collage">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/gallery/IMG_0914.JPG" alt="Gallery 1">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/gallery/IMG_0928.JPG" alt="Gallery 2">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/gallery/IMG_0979.JPG" alt="Gallery 3">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/gallery/IMG_1171 2.JPG" alt="Gallery 4">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/gallery/IMG_4225.JPG" alt="Gallery 5">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/gallery/P3312763.JPG" alt="Gallery 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <div class="section-number">Contact</div>
+            <h2>Get in Touch</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-form-wrapper">
+                <p class="contact-intro">For bookings, collaborations, or inquiries: <a href="mailto:pubeigloria@gmail.com" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--olive);">pubeigloria@gmail.com</a></p>
+
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/pubeigloria@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New message from DJ Portfolio">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" class="btn-ink">Send Message</button>
+                    </div>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    <p style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.5rem;">Thank you.</p>
+                    <p style="font-size: 0.875rem; color: var(--olive);">Your message has been received.</p>
+                </div>
+            </div>
+
+            <div class="contact-image">
+                <img src="images/contact-image.jpg" alt="DJ KiraKira">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <!-- Decorative shapes -->
+        <div class="footer-shape shape-1"></div>
+        <div class="footer-shape shape-2"></div>
+        <div class="footer-shape shape-3"></div>
+        <div class="footer-shape shape-4"></div>
+        <div class="footer-shape shape-5"></div>
+
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-year">2026</div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/gloriapu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://www.instagram.com/gloria_kirakira" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2026 Gloria Pu. All rights reserved.
+                </div>
+                <div class="footer-brand">
+                    DJ<br>KIRAKIRA
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img id="lightboxImage" src="" alt="">
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Hero background flickering effect and title fade effect
+        const heroImages = [
+            'images/hero-bg.jpeg',
+            'images/闪动7.jpeg',
+            'images/闪动9.jpeg',
+            'images/闪动2.jpg',
+            'images/闪动1.jpg',
+            'images/闪动8.jpeg'
+        ];
+        let currentImageIndex = 0;
+        const heroSection = document.querySelector('.hero');
+        const heroContent = document.querySelector('.hero-content');
+        const heroBackground = document.querySelector('.hero-background');
+
+        function changeHeroBackground() {
+            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+            const nextImage = heroImages[currentImageIndex];
+
+            // Apply to background div
+            heroBackground.style.backgroundImage = `url('${nextImage}')`;
+        }
+
+        // Initialize first image
+        heroBackground.style.backgroundImage = `url('${heroImages[0]}')`;
+
+        // Change image every 500ms (0.5 seconds)
+        setInterval(changeHeroBackground, 500);
+
+        // Hero title fixed effect (Acne Studios style)
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const heroHeight = heroSection.offsetHeight;
+
+            // Fade out title when scrolling past 70% of hero section
+            if (scrollPosition > heroHeight * 0.7) {
+                heroContent.classList.add('fade-out');
+            } else {
+                heroContent.classList.remove('fade-out');
+            }
+        });
+
+        // Lightbox functionality
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+
+            lightboxImage.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on outside click
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Contact form submission - FormSubmit will handle the actual submission
+        // The form will submit to FormSubmit and redirect to their thank you page
+
+        // Smooth scroll behavior for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Optional: Add scroll reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply subtle fade-in effect to sections (except hero)
+        document.querySelectorAll('section:not(.hero)').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+
+        // Hero is always visible (no transform to avoid breaking fixed positioning)
+        document.querySelector('.hero').style.opacity = '1';
+
+        // Navigation scroll effect
+        const mainNav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                mainNav.classList.add('scrolled');
+            } else {
+                mainNav.classList.remove('scrolled');
+            }
+        });
+
+        // Add scroll reveal animation for h2 titles
+        const titleObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const titleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, titleObserverOptions);
+
+        // Observe all h2 titles (except in hero section)
+        document.querySelectorAll('section:not(.hero) h2').forEach(title => {
+            titleObserver.observe(title);
+        });
+
+        // Add scroll reveal animation for gallery items
+        const galleryObserverOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const galleryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, galleryObserverOptions);
+
+        // Observe all gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            galleryObserver.observe(item);
+        });
+
+        // Add scroll reveal animation for footer shapes
+        const footerShapeObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const footerShapeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, footerShapeObserverOptions);
+
+        // Observe all footer shapes
+        document.querySelectorAll('.footer-shape').forEach(shape => {
+            footerShapeObserver.observe(shape);
+        });
+
+        // Add scroll reveal animation for footer brand
+        const footerBrandObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const footerBrandObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, footerBrandObserverOptions);
+
+        // Observe footer brand
+        const footerBrand = document.querySelector('.footer-brand');
+        if (footerBrand) {
+            footerBrandObserver.observe(footerBrand);
+        }
+
+        // Add scroll reveal animation for about shapes
+        const aboutShapeObserverOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+
+        const aboutShapeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, aboutShapeObserverOptions);
+
+        // Observe about decoration
+        const aboutDecoration = document.querySelector('.about-decoration');
+        if (aboutDecoration) {
+            aboutShapeObserver.observe(aboutDecoration);
+        }
+
+        // Add scroll reveal animation for about illustration
+        const aboutIllustrationObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const aboutIllustrationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, aboutIllustrationObserverOptions);
+
+        // Observe about illustration
+        const aboutIllustration = document.querySelector('.about-illustration');
+        if (aboutIllustration) {
+            aboutIllustrationObserver.observe(aboutIllustration);
+        }
+
+        // Add scroll reveal animation for disco decoration
+        const discoDecorationObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const discoDecorationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, discoDecorationObserverOptions);
+
+        // Observe disco decoration
+        const discoDecoration = document.querySelector('.disco-decoration');
+        if (discoDecoration) {
+            discoDecorationObserver.observe(discoDecoration);
+        }
+
+        // Add scroll reveal animation for listen back decoration
+        const listenBackDecorationObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const listenBackDecorationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, listenBackDecorationObserverOptions);
+
+        // Observe listen back decoration
+        const listenBackDecoration = document.querySelector('.listen-back-decoration');
+        if (listenBackDecoration) {
+            listenBackDecorationObserver.observe(listenBackDecoration);
+        }
+
+        // Year titles animation
+        const yearTitleObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const yearTitleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, yearTitleObserverOptions);
+
+        // Observe all year titles
+        document.querySelectorAll('.year-title').forEach(title => {
+            yearTitleObserver.observe(title);
+        });
+
+        // Contact image animation
+        const contactImageObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const contactImageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, contactImageObserverOptions);
+
+        // Observe contact image
+        const contactImage = document.querySelector('.contact-image');
+        if (contactImage) {
+            contactImageObserver.observe(contactImage);
+        }
+
+        // Quote section scroll animation
+        const quoteSection = document.querySelector('.quote-section');
+        const quoteLines = document.querySelectorAll('.quote-line');
+        const quoteAuthor = document.querySelector('.quote-author');
+
+        if (quoteSection && quoteLines.length > 0) {
+            window.addEventListener('scroll', () => {
+                const sectionRect = quoteSection.getBoundingClientRect();
+                const sectionHeight = quoteSection.offsetHeight;
+                const viewportHeight = window.innerHeight;
+
+                // Calculate scroll progress through the section (0 to 1)
+                const scrollProgress = Math.max(0, Math.min(1,
+                    (viewportHeight - sectionRect.top) / (sectionHeight - viewportHeight)
+                ));
+
+                // Animate background images with parallax and opacity
+                const quoteBgImages = document.querySelectorAll('.quote-bg-image');
+                quoteBgImages.forEach((img, index) => {
+                    const speed = 0.3 + (index * 0.15);
+                    const yOffset = scrollProgress * 100 * speed;
+                    const opacity = 0.15 + (scrollProgress * 0.1);
+                    img.style.transform = `translateY(${yOffset}px) rotate(${img.style.transform.match(/rotate\(([^)]+)\)/)?.[1] || '0deg'})`;
+                    img.style.opacity = Math.min(opacity, 0.25);
+                });
+
+                // Show lines progressively based on scroll progress
+                if (scrollProgress > 0.1) {
+                    quoteLines[0].classList.add('visible');
+                } else {
+                    quoteLines[0].classList.remove('visible');
+                }
+
+                if (scrollProgress > 0.3) {
+                    quoteLines[1].classList.add('visible');
+                    quoteLines[0].classList.add('move-up');
+                } else {
+                    quoteLines[1].classList.remove('visible');
+                    quoteLines[0].classList.remove('move-up');
+                }
+
+                if (scrollProgress > 0.55) {
+                    quoteLines[2].classList.add('visible');
+                    quoteLines[0].classList.add('final-position');
+                    quoteLines[1].classList.add('move-up');
+                } else {
+                    quoteLines[2].classList.remove('visible');
+                    quoteLines[0].classList.remove('final-position');
+                    quoteLines[1].classList.remove('move-up');
+                }
+
+                if (scrollProgress > 0.8) {
+                    quoteAuthor.classList.add('visible');
+                } else {
+                    quoteAuthor.classList.remove('visible');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
